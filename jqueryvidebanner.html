@@ -1,0 +1,76 @@
+<div id="container"><video width="320" height="240" autoplay="autoplay" muted="" loop="loop"><source src="https://scoreteam.com/charliescore/JanellyFDmk3.mp4" type="video/mp4" /><object width="320" height="240" data="https://scoresports.com/js/tiny_mce/plugins/media/moxieplayer.swf" type="application/x-shockwave-flash"><param name="src" value="https://scoresports.com/js/tiny_mce/plugins/media/moxieplayer.swf" /><param name="flashvars" value="url=https%3A//scoreteam.com/charliescore/JanellyFDmk3.mp4&amp;poster=/index.php/scorepanel/cms_block/edit/block_id/384/key/3000128446cb5304bd0eb33f99f321af/" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="true" /></object></video><object width="320" height="240" data="https://scoresports.com/js/tiny_mce/plugins/media/moxieplayer.swf" type="application/x-shockwave-flash"><param name="src" value="https://scoresports.com/js/tiny_mce/plugins/media/moxieplayer.swf" /><param name="flashvars" value="url=http%3A//ak4.picdn.net/shutterstock/videos/4170274/preview/stock-footage-beautiful-girl-lying-on-the-meadow-and-dreaming-enjoy-nature-close-up-slow-motion-footage.mp4&amp;poster=/index.php/scorepanel/cms_block/edit/block_id/384/key/3000128446cb5304bd0eb33f99f321af/" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="true" /></object></div>
+<style><!--
+* {
+  margin: 0; padding: 0;
+}
+
+#container {
+  overflow: hidden;
+  height: 400px;
+  background: #edeae8;
+  position: relative;
+}
+
+video {
+  position: absolute;
+
+  /* Vertical and Horizontal center*/
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+<script type="text/javascript">// <![CDATA[
+var video = document.querySelector('video')
+  , container = document.querySelector('#container');
+
+var setVideoDimensions = function () {
+  // Video's intrinsic dimensions
+  var w = video.videoWidth
+    , h = video.videoHeight;
+
+  // Intrinsic Ratio
+  // Will be more than 1 if W > H and less if W < H
+  var videoRatio = (w / h).toFixed(2);
+
+  // Get the container's computed styles
+  //
+  // Also calculate the min dimensions required (this will be
+  // the container dimentions)
+  var containerStyles = window.getComputedStyle(container)
+    , minW = parseInt( containerStyles.getPropertyValue('width') )
+    , minH = parseInt( containerStyles.getPropertyValue('height') );
+
+  // What's the min:intrinsic dimensions
+  //
+  // The idea is to get which of the container dimension
+  // has a higher value when compared with the equivalents
+  // of the video. Imagine a 1200x700 container and
+  // 1000x500 video. Then in order to find the right balance
+  // and do minimum scaling, we have to find the dimension
+  // with higher ratio.
+  //
+  // Ex: 1200/1000 = 1.2 and 700/500 = 1.4 - So it is best to
+  // scale 500 to 700 and then calculate what should be the
+  // right width. If we scale 1000 to 1200 then the height
+  // will become 600 proportionately.
+  var widthRatio = minW / w
+    , heightRatio = minH / h;
+
+  // Whichever ratio is more, the scaling
+  // has to be done over that dimension
+  if (widthRatio > heightRatio) {
+    var newWidth = minW;
+    var newHeight = Math.ceil( newWidth / videoRatio );
+  }
+  else {
+    var newHeight = minH;
+    var newWidth = Math.ceil( newHeight * videoRatio );
+  }
+
+  video.style.width = newWidth + 'px';
+  video.style.height = newHeight + 'px';
+};
+
+video.addEventListener('loadedmetadata', setVideoDimensions, false);
+window.addEventListener('resize', setVideoDimensions, false);
+// ]]></script>
