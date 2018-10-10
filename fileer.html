@@ -1,0 +1,34 @@
+<head>
+      <title>Your Awesome Website</title>
+      <link rel="stylesheet" href="your-path-to-skippr.css">
+  </head>
+  <body>
+<div id="container">
+           <div id="theTarget">
+               <div style="background-image: url(img/image1.jpg)"></div>
+               <div style="background-image: url(img/image2.jpg)"></div>
+               <div style="background-image: url(img/image3.jpg)"></div>
+               <div style="background-image: url(img/image4.jpg)"></div>
+               <div style="background-image: url(img/image5.jpg)"></div>
+           </div>
+       </div>
+
+       <script>
+       $(document).ready(function(){
+
+                   $("#theTarget").skippr();
+                   transition: 'slide',
+                             speed: 1000,
+                             easing: 'easeOutQuart',
+                             navType: 'block',
+                             childrenElementType: 'div',
+                             arrows: true,
+                             autoPlay: false,
+                             autoPlayDuration: 5000,
+                             keyboardOnAlways: true,
+                             hidePrevious: false
+               });
+       </script>
+       <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+              <script src="your-path-to-skippr.js"></script>
+          </body>

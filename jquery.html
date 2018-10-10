@@ -1,0 +1,188 @@
+<script type="text/javascript" src="jquery.glide.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">// <![CDATA[
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+});
+// ]]></script>
+<script type="text/javascript">// <![CDATA[
+var width = 100;
+var animation_speed = 700;
+var time_val = 3000;
+var current_slide = 1;
+
+var $slider = $('#slider');
+var $slide_container = $('.slides');
+var $slides = $('.slide');
+
+var interval;
+
+$slides.each(function(index){
+  $(this).css('left',(index*100)+'%');
+});
+
+function startSlider() {
+  interval = setInterval(function() {
+    $slide_container.animate({'left': '-='+(width+'%')}, animation_speed, function() {
+      if (++current_slide === $slides.length) {
+        current_slide = 2;
+        $slide_container.css('left', 0);
+      }
+    });
+  }, time_val);
+}
+
+startSlider();
+// ]]></script>
+<style>
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+<div id="flip">Click to slide the panel down or up</div>
+<div id="panel">Hello world!</div>
+<br />
+<div id="slider">
+<ul class="slides">
+<li class="slide slide1">slide1
+<ul>
+<li><a href="#" title="Header" data-toggle="popover" data-placement="bottom" data-content="Free Shipping on valid on web orders over $75. Free shipping begins 3/1/2018 thru 3/25/2018. Free Shipping cannot be applied to sales tax, field paint, goals, field &amp; goals accessories. Free Shipping method is UPS Ground. Free shippinhg only valid within the contingous 48 States. Free Shipping promotion is subject to change. Offer Expires 3/25/2018 Offfer valid while supplies last.">Details</a></li>
+</ul>
+</li>
+<li class="slide slide2">slide2</li>
+<li class="slide slide3">slide3</li>
+<li class="slide slide4">slide4</li>
+<li class="slide slide5">slide5</li>
+<li class="slide slide1">slide1</li>
+</ul>
+</div>
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+}
+#slider {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+.slides {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.slide {
+  position: absolute;
+  list-style-type: none;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+}
+.slide1 {background: red;}
+.slide2 {background: blue;}
+.slide3 {background: green;}
+.slide4 {background: purple;}
+.slide5 {background: pink;}
+</style>
+<script type="text/javascript">// <![CDATA[
+jQuery(document).ready(function(){
+    $j('[data-toggle="popover"]').popover();
+});
+// ]]></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<style><!--
+#toggle {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+  }
+</style>
+<script src="//code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js" type="text/javascript"></script>
+<p>Click anywhere to toggle the box.</p>
+<div id="toggle"></div>
+<script type="text/javascript">// <![CDATA[
+$( document ).click(function() {
+  $( "#toggle" ).toggle( "bounce", { times: 3 }, "slow" );
+});
+// ]]></script>
+<style>
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+</style>
+<h2>Accordion with symbols</h2>
+<p>In this example we have added a "plus" sign to each button. When the user clicks on the button, the "plus" sign is replaced with a "minus" sign.</p>
+<button class="accordion">Section 1</button>
+<div class="panel">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button class="accordion">Section 2</button>
+<div class="panel">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button class="accordion">Section 3</button>
+<div class="panel">
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<script type="text/javascript">// <![CDATA[
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+// ]]></script>

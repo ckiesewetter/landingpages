@@ -1,0 +1,34 @@
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous" type="text/javascript"></script>
+<script type="text/javascript" src="8_Ball_Challenge.js"></script>
+<link rel="stylesheet" href="8_Ball_Challenge.css" /><meta charset="utf-8" />
+<h1>Score Gift Generator</h1>
+<p>Gifts are only a click away!</p>
+<!-- <input id="question" type="text" placeholder="Ask me a question..." onkeypress="enter(event)" /> -->
+<button id="submit" type="button" value="Submit">Click Me</button>
+<br />
+<p id="answer"></p>
+<script type="text/javascript">// <![CDATA[
+function enter(x) {
+  if (x.keyCode == 13) {
+
+  }
+}
+
+$(document).ready(function() {
+  var responses = "Yup!, Fuhgeddaboudit, I Hate You, You smell like a hamster, Your Mothers a Terrible Cook , Fucking Loser, Shit.".split(",");
+  //^^^ Takes a string and seperates it into an array using .split(",") to split the string with every comma
+
+  $("button").on("click", function() {
+  //  alert($("#question").val());
+    var resp = responses[getRandomInt(0, responses.length-1)] //gets a random response
+    $("#answer").text($("#question").val() + " " + resp);
+    $("#question").val("");
+  });
+
+});
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min; //gets a random number between min and max
+}
+$.noConflict();
+// ]]></script>
